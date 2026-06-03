@@ -1,34 +1,45 @@
 import { useState } from 'react';
+import { motion, AnimatePresence } from 'framer-motion';
 import SectionLabel from './SectionLabel';
-import { useStaggerReveal } from '../hooks/useScrollReveal';
+import { faqs } from '../content/portfolioContent';
 import './FAQ.css';
-
-const faqs = [
-  { q: 'What services do you offer?', a: 'We offer art direction, brand identity, motion design, web development, and Framer-powered site creation — all tailored to your creative needs.' },
-  { q: 'What is your typical turnaround time?', a: 'Most projects are delivered within 2–4 weeks depending on scope. Smaller builds like one-page sites can be completed in under 7 days.' },
-  { q: 'Do you only work in Framer?', a: 'While Framer is our primary tool for website builds, we also work with Figma, After Effects, and custom code when needed.' },
-  { q: 'Can you handle both design and build?', a: 'Absolutely. We handle everything from initial concept and design to final development and launch — all under one roof.' },
-  { q: 'Do you offer brand strategy too?', a: 'Yes. We offer strategic guidance on positioning, messaging, and visual direction to ensure your brand communicates with clarity and intent.' },
-  { q: 'What\'s your process like?', a: 'We start with discovery and strategy, move into design concepts, iterate based on feedback, then build and launch. Communication is clear at every step.' },
-];
 
 export default function FAQ() {
   const [open, setOpen] = useState(null);
-  const listRef = useStaggerReveal(0.1, 60);
+  
+  const containerVariants = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: { staggerChildren: 0.1 },
+    },
+  };
+
+  const itemVariants = {
+    hidden: { opacity: 0, y: 30 },
+    visible: { opacity: 1, y: 0, transition: { type: 'spring', stiffness: 100, damping: 20 } },
+  };
 
   return (
     <section className="faq" id="faq">
       <div className="faq__inner">
         <SectionLabel
-          left="© Help Center ヘルプ"
+          left="© Recruiter FAQ"
           center="(WDX® — 11)"
-          right="Clarifications"
+          right="Quick Answers"
         />
-        <div className="faq__list" ref={listRef}>
+        <motion.div 
+          className="faq__list"
+          variants={containerVariants}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, margin: "-100px" }}
+        >
           {faqs.map((f, i) => (
-            <div
+            <motion.div
               key={i}
-              className={`faq-item stagger-item ${open === i ? 'faq-item--open' : ''}`}
+              className={`faq-item ${open === i ? 'faq-item--open' : ''}`}
+              variants={itemVariants}
               onClick={() => setOpen(open === i ? null : i)}
             >
               <div className="faq-item__header">
@@ -36,12 +47,23 @@ export default function FAQ() {
                 <h3 className="faq-item__question">{f.q}</h3>
                 <span className="faq-item__toggle">{open === i ? '−' : '+'}</span>
               </div>
-              <div className="faq-item__body">
-                <p className="faq-item__answer">{f.a}</p>
-              </div>
-            </div>
+              <AnimatePresence>
+                {open === i && (
+                  <motion.div 
+                    className="faq-item__body"
+                    initial={{ height: 0, opacity: 0 }}
+                    animate={{ height: 'auto', opacity: 1 }}
+                    exit={{ height: 0, opacity: 0 }}
+                    transition={{ duration: 0.3, ease: "easeOut" }}
+                    style={{ overflow: 'hidden' }}
+                  >
+                    <p className="faq-item__answer">{f.a}</p>
+                  </motion.div>
+                )}
+              </AnimatePresence>
+            </motion.div>
           ))}
-        </div>
+        </motion.div>
       </div>
     </section>
   );

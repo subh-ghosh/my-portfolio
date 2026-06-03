@@ -1,16 +1,28 @@
+import { motion } from 'framer-motion';
 import './RollingText.css';
 
 export default function RollingText({ text, href = '#', tag = 'a', className = '' }) {
-  const Tag = tag;
+  const Tag = tag === 'a' ? motion.a : motion.div;
   const props = tag === 'a' ? { href } : {};
-  const isCta = className.includes('rolling-text--cta');
 
   return (
-    <Tag className={`rolling-text ${className}`} {...props}>
-      <span className="rolling-text__inner">
+    <Tag 
+      className={`rolling-text ${className}`} 
+      {...props}
+      initial="initial"
+      whileHover="hover"
+    >
+      <motion.span 
+        className="rolling-text__inner"
+        variants={{
+          initial: { y: '0%' },
+          hover: { y: '-50%' }
+        }}
+        transition={{ type: 'spring', stiffness: 300, damping: 20 }}
+      >
         <span className="rolling-text__default">{text}</span>
         <span className="rolling-text__hover" aria-hidden="true">{text}</span>
-      </span>
+      </motion.span>
     </Tag>
   );
 }

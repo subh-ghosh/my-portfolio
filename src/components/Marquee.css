@@ -41,9 +41,33 @@
   opacity: 0.15;
 }
 
+.marquee--massive {
+  background: transparent;
+  color: var(--text-primary);
+  padding: 20px 0;
+  font-size: clamp(80px, 20vw, 300px);
+  font-weight: 700;
+  letter-spacing: -0.05em;
+  line-height: 0.85;
+  overflow: hidden;
+}
+
 .marquee__track {
   display: inline-flex;
   gap: 0;
+}
+
+.marquee__static {
+  display: block;
+  width: 100%;
+}
+
+.marquee__static span {
+  display: block;
+  font-size: inherit;
+  font-weight: inherit;
+  letter-spacing: inherit;
+  line-height: inherit;
 }
 
 .marquee__track span {
@@ -58,6 +82,11 @@
   font-size: 14px;
   font-weight: 400;
   letter-spacing: 0.02em;
+}
+
+.marquee--hero .marquee__static,
+.marquee--giant .marquee__static {
+  overflow: hidden;
 }
 
 .marquee__track--left {

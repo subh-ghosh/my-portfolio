@@ -9,17 +9,20 @@
 }
 
 .profile__layout {
-  position: relative;
-  min-height: 600px;
-  display: flex;
+  display: grid;
+  grid-template-columns: minmax(320px, 0.9fr) minmax(0, 1.1fr);
+  gap: 56px;
   align-items: center;
-  justify-content: center;
   margin-bottom: 60px;
 }
 
+.profile__cards {
+  display: grid;
+  gap: 20px;
+}
+
 .profile__image {
-  position: absolute;
-  z-index: 1;
+  position: relative;
 }
 
 .profile__placeholder {
@@ -28,50 +31,53 @@
   align-items: center;
   justify-content: center;
   overflow: hidden;
+  padding: 22px;
 }
 
-.profile__placeholder svg {
-  width: 40px;
-  height: 40px;
-  color: rgba(255,255,255,0.1);
+.profile__content-block {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100%;
 }
 
-.profile__image--tl {
-  top: 0;
-  left: 5%;
-}
-.profile__image--tl .profile__placeholder {
-  width: 280px;
-  height: 360px;
+.profile__card-copy {
+  display: grid;
+  gap: 12px;
+  color: rgba(255,255,255,0.88);
+  line-height: 1.55;
 }
 
-.profile__image--tr {
-  top: 0;
-  right: 5%;
-}
-.profile__image--tr .profile__placeholder {
-  width: 320px;
-  height: 320px;
+.profile__card-copy p {
+  font-size: 14px;
 }
 
-.profile__image--bl {
-  bottom: 0;
-  left: 10%;
+.profile__card-title {
+  font-size: 12px;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: rgba(255,255,255,0.6);
 }
-.profile__image--bl .profile__placeholder {
-  width: 260px;
-  height: 340px;
+
+.profile__image:nth-child(1) .profile__placeholder {
+  min-height: 220px;
+}
+
+.profile__image:nth-child(2) .profile__placeholder {
+  min-height: 200px;
+}
+
+.profile__image:nth-child(3) .profile__placeholder {
+  min-height: 180px;
 }
 
 .profile__text {
-  position: relative;
-  z-index: 2;
   font-size: clamp(28px, 4.5vw, 56px);
   font-weight: 400;
   line-height: 1.2;
   letter-spacing: -0.02em;
-  text-align: center;
-  max-width: 900px;
+  text-align: left;
+  max-width: 720px;
   background: linear-gradient(180deg, rgba(255,255,255,1) 0%, rgba(100,120,180,0.6) 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
@@ -95,18 +101,10 @@
 
 @media (max-width: 768px) {
   .profile__layout {
-    min-height: 400px;
+    grid-template-columns: 1fr;
+    gap: 32px;
   }
-  .profile__image--tl .profile__placeholder {
-    width: 140px;
-    height: 180px;
-  }
-  .profile__image--tr .profile__placeholder {
-    width: 160px;
-    height: 160px;
-  }
-  .profile__image--bl .profile__placeholder {
-    width: 130px;
-    height: 170px;
+  .profile__text {
+    text-align: center;
   }
 }

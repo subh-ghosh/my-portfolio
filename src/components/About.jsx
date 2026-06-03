@@ -1,50 +1,98 @@
+import { useRef } from 'react';
+import { motion, useScroll, useTransform } from 'framer-motion';
 import SectionLabel from './SectionLabel';
 import RollingText from './RollingText';
-import Marquee from './Marquee';
-import { useScrollReveal, useStaggerReveal, useSplitTextReveal, useParallax } from '../hooks/useScrollReveal';
+import { currentFocus, personalPitch, techPillars } from '../content/portfolioContent';
 import './About.css';
 
 export default function About() {
-  const contentRef = useScrollReveal();
-  const headingRef = useSplitTextReveal();
-  const logosRef = useStaggerReveal();
-  const imageRef = useParallax(0.15);
-  
+  const ref = useRef(null);
+  const { scrollYProgress } = useScroll({
+    target: ref,
+    offset: ["start end", "end start"]
+  });
+  const yVisual = useTransform(scrollYProgress, [0, 1], ["-10%", "10%"]);
+  const containerVariants = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: { staggerChildren: 0.1, delayChildren: 0.1 },
+    },
+  };
+
+  const itemVariants = {
+    hidden: { opacity: 0, y: 30 },
+    visible: { opacity: 1, y: 0, transition: { type: 'spring', stiffness: 80, damping: 20 } },
+  };
+
+  const textVariants = {
+    hidden: { opacity: 0, y: 40 },
+    visible: { opacity: 1, y: 0, transition: { type: 'spring', stiffness: 100, damping: 25 } },
+  };
+
   return (
     <section className="about" id="about">
       <div className="about__inner">
         <SectionLabel
-          left="© Curated Interfaces ビジュアル"
-          center="(WDX® — 02)"
-          right="Digital Designer"
+          left="Technical Summary"
+          right="Developer Snapshot"
         />
         <div className="about__grid">
-          <div className="about__image" ref={imageRef}>
+          <motion.div 
+            className="about__image"
+            initial={{ opacity: 0, scale: 0.95 }}
+            whileInView={{ opacity: 1, scale: 1 }}
+            viewport={{ once: true, margin: "-100px" }}
+            transition={{ duration: 0.8, ease: "easeOut" }}
+          >
             <div className="about__image-placeholder">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1" className="about__icon">
-                <path d="M15.75 6a3.75 3.75 0 11-7.5 0 3.75 3.75 0 017.5 0zM4.501 20.118a7.5 7.5 0 0114.998 0A17.933 17.933 0 0112 21.75c-2.676 0-5.216-.584-7.499-1.632z" />
-              </svg>
+              <div className="about__visual-container" ref={ref}>
+                <motion.div 
+                  className="about__visual"
+                  style={{ y: yVisual }}
+                >
+                  <img src="/profile-placeholder.png" alt="Profile Abstract" className="about__image" />
+                </motion.div>
+              </div>
+              <div className="about__summary-card">
+                <span className="about__summary-label">Current focus</span>
+                <ul className="about__summary-list">
+                  {currentFocus.map((item) => (
+                    <li key={item}>{item}</li>
+                  ))}
+                </ul>
+              </div>
             </div>
-          </div>
-          <div className="about__content reveal" ref={contentRef}>
-            <h2 className="about__heading" ref={headingRef}>
-              13+ years™ of digital form, sharp interactions, and relentless creative discipline and effort.
-            </h2>
-            <RollingText text="CONTACT" href="#footer" className="rolling-text--cta" />
-          </div>
+          </motion.div>
+          <motion.div 
+            className="about__content"
+            variants={containerVariants}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, margin: "-100px" }}
+          >
+            <motion.h2 className="about__heading" variants={textVariants}>
+              Full stack developer skilled in Java, Spring Boot, FastAPI, React, SQL, and modern cloud delivery with a strong grounding in DSA, OOPs, DBMS, and systems thinking.
+            </motion.h2>
+            <motion.p className="about__pitch" variants={textVariants}>{personalPitch}</motion.p>
+            <motion.div variants={textVariants}>
+              <RollingText text="CONTACT" href="#contact" className="rolling-text--cta" />
+            </motion.div>
+          </motion.div>
         </div>
-        <Marquee
-          items={['Visual', 'Freelancer', 'Digital Nomad', 'Creative Developer']}
-          variant="strip"
-          speed={25}
-        />
-        <div className="about__logos" ref={logosRef}>
-          {['Cairo', 'oslo.', 'Chain', 'Manila.', 'Theo'].map((name) => (
-            <div key={name} className="about__logo-card stagger-item">
+        <motion.div 
+          className="about__logos"
+          variants={containerVariants}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, margin: "-100px" }}
+        >
+          {techPillars.map((name) => (
+            <motion.div key={name} className="about__logo-card" variants={itemVariants}>
               <span className="about__logo-text">{name}</span>
-            </div>
+            </motion.div>
           ))}
-        </div>
+        </motion.div>
       </div>
     </section>
   );

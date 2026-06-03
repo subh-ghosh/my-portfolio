@@ -9,14 +9,14 @@
 }
 
 .capabilities__heading {
-  margin-bottom: 40px;
+  margin-bottom: 18px;
 }
 
 .capabilities__title {
-  font-size: clamp(80px, 14vw, 200px);
-  font-weight: 800;
+  font-size: clamp(40px, 7vw, 88px);
+  font-weight: 700;
   letter-spacing: -0.04em;
-  line-height: 0.9;
+  line-height: 0.95;
 }
 
 .capabilities__title sup {
@@ -27,14 +27,14 @@
 }
 
 .capabilities__list {
-  margin-top: 60px;
+  margin-top: 32px;
 }
 
 .capability-item {
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 40px;
-  padding: 32px 0;
+  padding: 26px 0;
   border-bottom: 1px solid var(--border-light);
   align-items: start;
 }

@@ -1,41 +1,107 @@
+import { useRef } from 'react';
+import { motion, useScroll, useTransform } from 'framer-motion';
 import Marquee from './Marquee';
+import MagneticButton from './MagneticButton';
+import { heroHighlights, openTo, personalInfo, quickStats, summary } from '../content/portfolioContent';
 import './Hero.css';
 
 export default function Hero() {
+  const textRef = useRef(null);
+  const { scrollYProgress } = useScroll({
+    target: textRef,
+    offset: ["start end", "end start"]
+  });
+  const x = useTransform(scrollYProgress, [0, 1], ["0%", "-30%"]);
+
+  const containerVariants = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: {
+        staggerChildren: 0.1,
+        delayChildren: 0.2,
+      },
+    },
+  };
+
+  const itemVariants = {
+    hidden: { opacity: 0, y: 30 },
+    visible: { opacity: 1, y: 0, transition: { type: 'spring', stiffness: 100, damping: 20 } },
+  };
+
   return (
     <section className="hero">
       <div className="hero__content">
         <div className="hero__grid">
-          <div className="hero__text hero__animate-in">
-            <h1 className="hero__heading">
-              Pattern Dimensions and Moments that Connect and Leave a Bold <span className="hero__jp">イメージ</span>.
-            </h1>
-          </div>
-          <div className="hero__visual hero__animate-in hero__animate-in--delay">
+          <motion.div 
+            className="hero__text"
+            variants={containerVariants}
+            initial="hidden"
+            animate="visible"
+          >
+            <motion.p className="hero__eyebrow" variants={itemVariants}>
+              {personalInfo.subtitle} · {personalInfo.location}
+            </motion.p>
+            <motion.h1 className="hero__heading" variants={itemVariants}>
+              Building scalable products with backend depth, full stack execution, and measurable engineering impact.
+            </motion.h1>
+            <motion.p className="hero__summary" variants={itemVariants}>{summary}</motion.p>
+            <motion.p className="hero__availability" variants={itemVariants}>
+              Open to {openTo[0].toLowerCase()}, {openTo[1].toLowerCase()}, and {openTo[2].toLowerCase()}.
+            </motion.p>
+            <motion.div className="hero__actions" variants={itemVariants}>
+              <MagneticButton>
+                <a className="hero__cta" href="#projects">View Projects</a>
+              </MagneticButton>
+              <MagneticButton>
+                <a className="hero__cta hero__cta--ghost" href="/Resume.pdf" download>Download Resume</a>
+              </MagneticButton>
+              <MagneticButton>
+                <a className="hero__cta hero__cta--ghost" href="#contact">Contact</a>
+              </MagneticButton>
+            </motion.div>
+          </motion.div>
+          <motion.div 
+            className="hero__visual"
+            initial={{ opacity: 0, scale: 0.95, rotate: -2 }}
+            animate={{ opacity: 1, scale: 1, rotate: 0 }}
+            transition={{ type: 'spring', stiffness: 80, damping: 25, delay: 0.4 }}
+          >
             <div className="hero__image-card">
               <div className="hero__image-placeholder">
-                <div className="hero__image-inner">
-                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" className="hero__icon">
-                    <path d="M2.25 15.75l5.159-5.159a2.25 2.25 0 013.182 0l5.159 5.159m-1.5-1.5l1.409-1.409a2.25 2.25 0 013.182 0l2.909 2.909M3.75 21h16.5A2.25 2.25 0 0022.5 18.75V5.25A2.25 2.25 0 0020.25 3H3.75A2.25 2.25 0 001.5 5.25v13.5A2.25 2.25 0 003.75 21z" />
-                  </svg>
+                <div className="hero__image-inner hero__image-inner--profile">
+                  <span className="hero__card-label">{personalInfo.title}</span>
+                  <h2 className="hero__card-name">{personalInfo.name}</h2>
+                  <div className="hero__stats">
+                    {quickStats.map((stat) => (
+                      <div key={stat.label} className="hero__stat">
+                        <span className="hero__stat-value">{stat.value}</span>
+                        <span className="hero__stat-label">{stat.label}</span>
+                      </div>
+                    ))}
+                  </div>
                 </div>
               </div>
             </div>
-          </div>
+          </motion.div>
         </div>
       </div>
+      <motion.div 
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ delay: 0.6, duration: 1 }}
+      >
+        <Marquee
+          items={["SUBARTA GHOSH", "FULL STACK DEVELOPER"]}
+          variant="massive"
+          speed={60}
+        />
+      </motion.div>
       <Marquee
-        items={['Art Direction', 'Branding', 'Strategy', 'Web Design']}
+        items={heroHighlights}
         variant="strip"
         speed={20}
       />
-      <div className="hero__name-section">
-        <Marquee
-          items={['Akihiko™']}
-          variant="hero"
-          speed={25}
-        />
-      </div>
     </section>
   );
 }

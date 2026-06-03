@@ -20,6 +20,28 @@
   position: relative;
 }
 
+.about__visual-container {
+  position: absolute;
+  inset: 0;
+  border-radius: 12px;
+  overflow: hidden;
+  z-index: 0;
+}
+
+.about__visual {
+  width: 100%;
+  height: 130%;
+  position: relative;
+  top: -15%;
+}
+
+.about__visual img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0.6;
+}
+
 .about__image-placeholder {
   width: 100%;
   aspect-ratio: 3/4;
@@ -29,12 +51,45 @@
   display: flex;
   align-items: center;
   justify-content: center;
+  padding: 32px;
 }
 
-.about__icon {
-  width: 60px;
-  height: 60px;
-  color: rgba(255,255,255,0.12);
+.about__summary-card {
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  height: 100%;
+  border-radius: 12px;
+  border: 1px solid rgba(255,255,255,0.08);
+  background: rgba(0,0,0,0.4);
+  padding: 24px;
+  backdrop-filter: blur(4px);
+}
+
+.about__summary-label {
+  display: block;
+  margin-bottom: 18px;
+  font-size: 12px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--text-secondary);
+}
+
+.about__summary-list {
+  margin: 0;
+  padding-left: 18px;
+  display: grid;
+  gap: 14px;
+  color: var(--text-primary);
+  line-height: 1.6;
+}
+
+.about__pitch {
+  max-width: 680px;
+  margin-bottom: 28px;
+  font-size: 16px;
+  line-height: 1.7;
+  color: var(--text-secondary);
 }
 
 .about__heading {
@@ -59,25 +114,30 @@
 }
 
 .about__logo-card {
-  border: 1px solid var(--border-light);
+  border: 1px solid rgba(255, 255, 255, 0.05);
   border-radius: 12px;
   padding: 40px 20px;
   display: flex;
   align-items: center;
   justify-content: center;
-  transition: border-color 0.3s;
+  background: rgba(255, 255, 255, 0.01);
+  backdrop-filter: blur(8px);
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  cursor: none;
 }
 
 .about__logo-card:hover {
-  border-color: rgba(255,255,255,0.15);
+  border-color: rgba(255, 255, 255, 0.2);
+  background: rgba(255, 255, 255, 0.04);
+  transform: translateY(-4px);
+  box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.5);
 }
 
 .about__logo-text {
-  font-size: 18px;
+  font-size: 16px;
   font-weight: 600;
   color: var(--text-secondary);
   letter-spacing: 0.02em;
-  font-style: italic;
 }
 
 @media (max-width: 768px) {

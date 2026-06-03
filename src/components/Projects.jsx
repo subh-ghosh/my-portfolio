@@ -1,16 +1,10 @@
+import { motion } from 'framer-motion';
 import SectionLabel from './SectionLabel';
 import RollingText from './RollingText';
 import Marquee from './Marquee';
-import { useScrollReveal, useStaggerReveal } from '../hooks/useScrollReveal';
+import MagneticButton from './MagneticButton';
+import { projects } from '../content/portfolioContent';
 import './Projects.css';
-
-const projects = [
-  { name: 'Sonder Goods', num: '01', category: 'Branding', size: 'large' },
-  { name: 'Halo Wear', num: '02', category: 'Web Design', size: 'small' },
-  { name: 'Lucent Lab', num: '03', category: 'Creative Direction', size: 'medium' },
-  { name: 'Arc & Bloom', num: '04', category: 'Identity Design', size: 'large' },
-  { name: 'Atelier Nara', num: '05', category: 'Portfolio Site', size: 'large' },
-];
 
 const gradients = [
   'linear-gradient(135deg, #0a1628 0%, #1a2a4a 50%, #0a1628 100%)',
@@ -21,44 +15,137 @@ const gradients = [
 ];
 
 export default function Projects() {
-  const headerRef = useScrollReveal();
-  const gridRef = useStaggerReveal(0.1, 100);
+  const containerVariants = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: {
+        staggerChildren: 0.15,
+        delayChildren: 0.1,
+      },
+    },
+  };
+
+  const itemVariants = {
+    hidden: { opacity: 0, y: 50 },
+    visible: { 
+      opacity: 1, 
+      y: 0, 
+      transition: { type: 'spring', stiffness: 80, damping: 20 } 
+    },
+  };
+
+  const headerVariants = {
+    hidden: { opacity: 0, y: 30 },
+    visible: { opacity: 1, y: 0, transition: { type: 'spring', stiffness: 100, damping: 20 } },
+  };
 
   return (
     <section className="projects" id="projects">
       <div className="projects__inner">
         <SectionLabel
-          left="© Featured Projects プロジェクト"
-          center="(WDX® — 03)"
-          right="Creative Development"
+          left="Featured Projects"
+          right="Engineering Work"
         />
-        <div className="projects__header reveal" ref={headerRef}>
-          <Marquee items={['Featured Works©']} variant="giant" speed={20} />
+        <motion.div 
+          className="projects__header"
+          variants={headerVariants}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, margin: "-100px" }}
+        >
+          <h2 className="projects__title">Selected Projects</h2>
           <p className="projects__desc">
-            Every project is a chance to blend design and development, shaping bold interactive ideas into sleek digital realities — built with intent, speed, and visual clarity that attracts lot of peoples.
+            A focused selection of backend, full stack, AI, and embedded systems work with quantified outcomes, production-minded architecture, and public proof.
           </p>
-          <RollingText text="SEE WORKS" href="#projects" className="rolling-text--cta" />
-        </div>
-        <div className="projects__grid" ref={gridRef}>
+          <RollingText text="SEE SKILLS" href="#skills" className="rolling-text--cta" />
+        </motion.div>
+        
+        <motion.div 
+          style={{ margin: '40px 0', opacity: 0.8 }}
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
+          viewport={{ once: true, margin: "-100px" }}
+        >
+          <Marquee
+            items={["FEATURED WORKS", "ENGINEERING & ARCHITECTURE"]}
+            variant="massive"
+            speed={75}
+          />
+        </motion.div>
+
+        <motion.div 
+          className="projects__grid"
+          variants={containerVariants}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, margin: "-100px" }}
+        >
           {projects.map((p, i) => (
-            <article key={p.num} className={`project-card project-card--${i % 2 === 0 ? 'large' : 'small'} stagger-item`}>
+            <motion.article 
+              key={p.num} 
+              className={`project-card project-card--${i % 2 === 0 ? 'large' : 'small'}`}
+              variants={itemVariants}
+            >
               <div className="project-card__image" style={{ background: gradients[i] }}>
-                <div className="project-card__overlay">
-                  <span className="project-card__category">{p.category}</span>
-                </div>
                 <div className="project-card__placeholder">
-                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1">
-                    <path d="M2.25 15.75l5.159-5.159a2.25 2.25 0 013.182 0l5.159 5.159m-1.5-1.5l1.409-1.409a2.25 2.25 0 013.182 0l2.909 2.909M3.75 21h16.5A2.25 2.25 0 0022.5 18.75V5.25A2.25 2.25 0 0020.25 3H3.75A2.25 2.25 0 001.5 5.25v13.5A2.25 2.25 0 003.75 21z" />
-                  </svg>
+                  <div className="project-card__stack">
+                    {p.stack.split(' · ').map(tech => (
+                      <span key={tech} className="project-card__tech-badge">{tech}</span>
+                    ))}
+                  </div>
+
+                  <p className="project-card__summary" style={{ fontSize: '18px', color: '#fff', marginBottom: '24px' }}>{p.summary}</p>
+                  
+                  <div className="project-card__metrics-grid">
+                    {p.metrics.map((metric) => {
+                      // Extract the number to highlight it if possible, or just style the whole block
+                      const words = metric.split(' ');
+                      const highlight = words[0];
+                      const rest = words.slice(1).join(' ');
+                      return (
+                        <div key={metric} className="project-card__metric-block">
+                          <span className="project-card__metric-highlight">{highlight}</span>
+                          <span className="project-card__metric-text">{rest}</span>
+                        </div>
+                      )
+                    })}
+                  </div>
+
+                  <div className="project-card__story">
+                    <div className="project-card__story-block">
+                      <span className="project-card__story-label">Challenge</span>
+                      <p>{p.challenge}</p>
+                    </div>
+                    <div className="project-card__story-block">
+                      <span className="project-card__story-label">Impact</span>
+                      <p>{p.impact}</p>
+                    </div>
+                  </div>
                 </div>
               </div>
               <div className="project-card__info">
-                <span className="project-card__name">{p.name}</span>
-                <span className="project-card__num">({p.num})</span>
+                <div className="project-card__meta">
+                  <span className="project-card__name">{p.name}</span>
+                  <span className="project-card__category">{p.category}</span>
+                  <span className="project-card__num">({p.num})</span>
+                </div>
+                <div className="project-card__links">
+                  {p.liveUrl ? (
+                    <MagneticButton>
+                      <a href={p.liveUrl} target="_blank" rel="noreferrer" className="project-card__action-btn">Live Demo</a>
+                    </MagneticButton>
+                  ) : null}
+                  {p.repoUrl ? (
+                    <MagneticButton>
+                      <a href={p.repoUrl} target="_blank" rel="noreferrer" className="project-card__action-btn project-card__action-btn--secondary">Source Code</a>
+                    </MagneticButton>
+                  ) : null}
+                </div>
               </div>
-            </article>
+            </motion.article>
           ))}
-        </div>
+        </motion.div>
       </div>
     </section>
   );
