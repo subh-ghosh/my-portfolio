@@ -1,0 +1,91 @@
+.about {
+  padding: var(--section-padding) 0;
+}
+
+.about__inner {
+  max-width: var(--max-width);
+  margin: 0 auto;
+  padding: 0 var(--side-padding);
+}
+
+.about__grid {
+  display: grid;
+  grid-template-columns: 1fr 1.3fr;
+  gap: 60px;
+  align-items: center;
+  margin-bottom: 60px;
+}
+
+.about__image {
+  position: relative;
+}
+
+.about__image-placeholder {
+  width: 100%;
+  aspect-ratio: 3/4;
+  border-radius: 12px;
+  background: linear-gradient(145deg, #1a1510, #1c1815);
+  border: 1px solid rgba(255,255,255,0.05);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.about__icon {
+  width: 60px;
+  height: 60px;
+  color: rgba(255,255,255,0.12);
+}
+
+.about__heading {
+  font-size: clamp(28px, 3.5vw, 46px);
+  font-weight: 400;
+  line-height: 1.2;
+  letter-spacing: -0.02em;
+  margin-bottom: 32px;
+  color: var(--text-primary);
+}
+
+.about__heading sup {
+  font-size: 0.5em;
+  vertical-align: super;
+}
+
+.about__logos {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  gap: 12px;
+  margin-top: 40px;
+}
+
+.about__logo-card {
+  border: 1px solid var(--border-light);
+  border-radius: 12px;
+  padding: 40px 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: border-color 0.3s;
+}
+
+.about__logo-card:hover {
+  border-color: rgba(255,255,255,0.15);
+}
+
+.about__logo-text {
+  font-size: 18px;
+  font-weight: 600;
+  color: var(--text-secondary);
+  letter-spacing: 0.02em;
+  font-style: italic;
+}
+
+@media (max-width: 768px) {
+  .about__grid {
+    grid-template-columns: 1fr;
+    gap: 40px;
+  }
+  .about__logos {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}

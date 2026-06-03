@@ -1,0 +1,55 @@
+.awards {
+  padding: var(--section-padding) 0;
+}
+
+.awards__inner {
+  max-width: var(--max-width);
+  margin: 0 auto;
+  padding: 0 var(--side-padding);
+}
+
+.awards__list {
+  margin-top: 60px;
+}
+
+.award-item {
+  display: grid;
+  grid-template-columns: 120px 1fr;
+  gap: 40px;
+  padding: 32px 0;
+  border-bottom: 1px solid var(--border-light);
+  align-items: start;
+}
+
+.award-item:first-child {
+  border-top: 1px solid var(--border-light);
+}
+
+.award-item__count {
+  font-size: 42px;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  line-height: 1;
+}
+
+.award-item__org {
+  font-size: 20px;
+  font-weight: 500;
+  margin-bottom: 8px;
+}
+
+.award-item__desc {
+  font-size: 15px;
+  line-height: 1.6;
+  color: var(--text-secondary);
+}
+
+@media (max-width: 768px) {
+  .award-item {
+    grid-template-columns: 80px 1fr;
+    gap: 20px;
+  }
+  .award-item__count {
+    font-size: 32px;
+  }
+}

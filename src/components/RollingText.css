@@ -1,0 +1,85 @@
+.rolling-text {
+  display: inline-block;
+  overflow: hidden;
+  cursor: pointer;
+  position: relative;
+  vertical-align: top;
+}
+
+.rolling-text__inner {
+  display: block;
+  transition: transform 0.35s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.rolling-text:hover .rolling-text__inner {
+  transform: translateY(-50%);
+}
+
+.rolling-text__default,
+.rolling-text__hover {
+  display: block;
+  white-space: nowrap;
+}
+
+/* --- Nav variant --- */
+.rolling-text--nav {
+  font-size: 14px;
+  color: var(--text-secondary);
+  transition: color 0.3s;
+  /* Single-line height clip */
+  height: 1.4em;
+  line-height: 1.4;
+}
+.rolling-text--nav .rolling-text__default,
+.rolling-text--nav .rolling-text__hover {
+  height: 1.4em;
+  line-height: 1.4;
+}
+.rolling-text--nav:hover {
+  color: var(--text-primary);
+}
+
+/* --- Footer variant --- */
+.rolling-text--footer {
+  font-size: 14px;
+  color: var(--text-secondary);
+  height: 1.4em;
+  line-height: 1.4;
+}
+.rolling-text--footer .rolling-text__default,
+.rolling-text--footer .rolling-text__hover {
+  height: 1.4em;
+  line-height: 1.4;
+}
+
+/* --- CTA pill variant --- */
+.rolling-text--cta {
+  display: inline-block;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  border-radius: 100px;
+  font-size: 14px;
+  font-weight: 500;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  transition: border-color 0.3s, background 0.3s;
+  overflow: hidden;
+  /* Height = padding-top + line-height*font-size + padding-bottom */
+  /* 14px + 14px*1.4 + 14px = 47.6px */
+  height: 48px;
+  line-height: 1.4;
+}
+
+.rolling-text--cta .rolling-text__default,
+.rolling-text--cta .rolling-text__hover {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 14px 32px;
+  height: 48px;
+  line-height: 1.4;
+}
+
+.rolling-text--cta:hover {
+  border-color: rgba(255, 255, 255, 0.8);
+  background: rgba(255, 255, 255, 0.05);
+}
