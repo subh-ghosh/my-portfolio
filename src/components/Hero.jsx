@@ -2,7 +2,6 @@ import { useRef } from 'react';
 import { motion, useScroll, useTransform } from 'framer-motion';
 import Marquee from './Marquee';
 import MagneticButton from './MagneticButton';
-import WordReveal from './WordReveal';
 import { heroHighlights, openTo, personalInfo, quickStats, summary } from '../content/portfolioContent';
 import './Hero.css';
 
@@ -20,7 +19,7 @@ export default function Hero() {
       opacity: 1,
       transition: {
         staggerChildren: 0.1,
-        delayChildren: 0.2,
+        delayChildren: 2.2,
       },
     },
   };
@@ -29,6 +28,8 @@ export default function Hero() {
     hidden: { opacity: 0, y: 30 },
     visible: { opacity: 1, y: 0, transition: { type: 'spring', stiffness: 100, damping: 20 } },
   };
+
+  const headingText = "Building scalable products with backend depth, full stack execution, and measurable engineering impact.";
 
   return (
     <section className="hero">
@@ -43,9 +44,19 @@ export default function Hero() {
             <motion.p className="hero__eyebrow" variants={itemVariants}>
               {personalInfo.subtitle} · {personalInfo.location}
             </motion.p>
-            <h1 className="hero__heading">
-              <WordReveal text="Building scalable products with backend depth, full stack execution, and measurable engineering impact." delay={0.2} />
-            </h1>
+            <motion.h1 className="hero__heading" variants={itemVariants}>
+              {headingText.split("").map((char, i) => (
+                <motion.span
+                  key={i}
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
+                  transition={{ duration: 0.05, delay: 2.4 + (i * 0.015) }}
+                  style={{ whiteSpace: "pre-wrap" }}
+                >
+                  {char}
+                </motion.span>
+              ))}
+            </motion.h1>
             <motion.p className="hero__summary" variants={itemVariants}>{summary}</motion.p>
             <motion.p className="hero__availability" variants={itemVariants}>
               Open to {openTo[0].toLowerCase()}, {openTo[1].toLowerCase()}, and {openTo[2].toLowerCase()}.

@@ -2,7 +2,6 @@ import { useRef } from 'react';
 import { motion, useScroll, useTransform } from 'framer-motion';
 import SectionLabel from './SectionLabel';
 import RollingText from './RollingText';
-import WordReveal from './WordReveal';
 import { currentFocus, personalPitch } from '../content/portfolioContent';
 import './About.css';
 
@@ -64,9 +63,9 @@ export default function About() {
             whileInView="visible"
             viewport={{ once: true, margin: "-100px" }}
           >
-            <h2 className="about__heading">
-              <WordReveal text="Full stack developer skilled in Java, Spring Boot, FastAPI, React, SQL, and modern cloud delivery with a strong grounding in DSA, OOPs, DBMS, and systems thinking." delay={0.1} />
-            </h2>
+            <motion.h2 className="about__heading" variants={textVariants}>
+              Full stack developer skilled in Java, Spring Boot, FastAPI, React, SQL, and modern cloud delivery with a strong grounding in DSA, OOPs, DBMS, and systems thinking.
+            </motion.h2>
             <motion.p className="about__pitch" variants={textVariants}>{personalPitch}</motion.p>
             
             <motion.div variants={textVariants} className="about__focus-block">
