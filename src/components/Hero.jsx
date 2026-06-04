@@ -1,4 +1,4 @@
-import { useRef } from 'react';
+import { useRef, useState, useEffect } from 'react';
 import { motion, useScroll, useTransform } from 'framer-motion';
 import Marquee from './Marquee';
 import MagneticButton from './MagneticButton';
@@ -29,7 +29,72 @@ export default function Hero() {
     visible: { opacity: 1, y: 0, transition: { type: 'spring', stiffness: 100, damping: 20 } },
   };
 
-  const headingText = "Building scalable products with backend depth, full stack execution, and measurable engineering impact.";
+  const baseText = "Building scalable products with backend depth, full stack execution, and measurable engineering ";
+  const word1 = "output.";
+  const word2 = "impact.";
+  const finalText = baseText + word2;
+
+  const [displayText, setDisplayText] = useState("");
+
+  useEffect(() => {
+    let timeout;
+    let currentStr = "";
+    let phase = "typeBase";
+    let index = 0;
+
+    const tick = () => {
+      if (phase === "typeBase") {
+        if (index < baseText.length) {
+          currentStr += baseText[index];
+          setDisplayText(currentStr);
+          index++;
+          timeout = setTimeout(tick, 15);
+        } else {
+          phase = "typeWord1";
+          index = 0;
+          timeout = setTimeout(tick, 15);
+        }
+      } else if (phase === "typeWord1") {
+        if (index < word1.length) {
+          currentStr += word1[index];
+          setDisplayText(currentStr);
+          index++;
+          timeout = setTimeout(tick, 40);
+        } else {
+          phase = "pause";
+          timeout = setTimeout(tick, 1200);
+        }
+      } else if (phase === "pause") {
+        phase = "deleteWord1";
+        index = 0;
+        timeout = setTimeout(tick, 30);
+      } else if (phase === "deleteWord1") {
+        if (index < word1.length) {
+          currentStr = currentStr.slice(0, -1);
+          setDisplayText(currentStr);
+          index++;
+          timeout = setTimeout(tick, 25);
+        } else {
+          phase = "pause2";
+          timeout = setTimeout(tick, 400);
+        }
+      } else if (phase === "pause2") {
+        phase = "typeWord2";
+        index = 0;
+        timeout = setTimeout(tick, 30);
+      } else if (phase === "typeWord2") {
+        if (index < word2.length) {
+          currentStr += word2[index];
+          setDisplayText(currentStr);
+          index++;
+          timeout = setTimeout(tick, 50);
+        }
+      }
+    };
+
+    timeout = setTimeout(tick, 2400);
+    return () => clearTimeout(timeout);
+  }, []);
 
   return (
     <section className="hero">
@@ -47,18 +112,17 @@ export default function Hero() {
             <motion.h1 className="hero__heading" variants={itemVariants} style={{ position: "relative" }}>
               {/* Invisible placeholder to reserve exact height and prevent layout shift */}
               <span style={{ visibility: "hidden" }}>
-                {headingText}
-                <span style={{ display: "inline-block", width: "0.4em", marginLeft: "4px" }} />
+                {finalText}
               </span>
               
               {/* Absolute layer where the actual typing happens */}
               <span style={{ position: "absolute", top: 0, left: 0, width: "100%", height: "100%", textAlign: "inherit" }}>
-                {headingText.split("").map((char, i) => (
+                {displayText.split("").map((char, i) => (
                   <motion.span
                     key={i}
-                    initial={{ opacity: 0, display: "none", textShadow: "0px 0px 20px rgba(255,255,255,1)" }}
-                    animate={{ opacity: 1, display: "inline", textShadow: "0px 0px 0px rgba(255,255,255,0)" }}
-                    transition={{ duration: 0.3, delay: 2.4 + (i * 0.02) }}
+                    initial={{ opacity: 0, textShadow: "0px 0px 20px rgba(255,255,255,1)" }}
+                    animate={{ opacity: 1, textShadow: "0px 0px 0px rgba(255,255,255,0)" }}
+                    transition={{ duration: 0.3 }}
                   >
                     {char}
                   </motion.span>
@@ -79,6 +143,7 @@ export default function Hero() {
                     backgroundColor: "var(--text-primary)",
                     verticalAlign: "bottom",
                     marginLeft: "4px",
+                    marginRight: "-1em",
                     marginBottom: "4px"
                   }}
                 />
