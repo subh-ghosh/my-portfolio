@@ -67,7 +67,7 @@ export const projects = [
       'P95 latency improved by 81.1% across 22 endpoints',
       '14,687 abusive requests blocked during stress testing',
     ],
-    liveUrl: 'https://ai-practice-platform.vercel.app',
+    liveUrl: 'https://asphaltprep.subartaghosh.co.in',
     repoUrl: 'https://github.com/subh-ghosh/ai-practice-platform',
   },
   {
