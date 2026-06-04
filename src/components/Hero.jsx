@@ -44,37 +44,45 @@ export default function Hero() {
             <motion.p className="hero__eyebrow" variants={itemVariants}>
               {personalInfo.subtitle} · {personalInfo.location}
             </motion.p>
-            <motion.h1 className="hero__heading" variants={itemVariants}>
-              {headingText.split("").map((char, i) => (
+            <motion.h1 className="hero__heading" variants={itemVariants} style={{ position: "relative" }}>
+              {/* Invisible placeholder to reserve exact height and prevent layout shift */}
+              <span style={{ visibility: "hidden" }}>
+                {headingText}
+                <span style={{ display: "inline-block", width: "0.4em", marginLeft: "4px" }} />
+              </span>
+              
+              {/* Absolute layer where the actual typing happens */}
+              <span style={{ position: "absolute", top: 0, left: 0, width: "100%", height: "100%", textAlign: "inherit" }}>
+                {headingText.split("").map((char, i) => (
+                  <motion.span
+                    key={i}
+                    initial={{ opacity: 0, display: "none", textShadow: "0px 0px 20px rgba(255,255,255,1)" }}
+                    animate={{ opacity: 1, display: "inline", textShadow: "0px 0px 0px rgba(255,255,255,0)" }}
+                    transition={{ duration: 0.3, delay: 2.4 + (i * 0.02) }}
+                  >
+                    {char}
+                  </motion.span>
+                ))}
                 <motion.span
-                  key={i}
-                  initial={{ opacity: 0, textShadow: "0px 0px 20px rgba(255,255,255,1)" }}
-                  animate={{ opacity: 1, textShadow: "0px 0px 0px rgba(255,255,255,0)" }}
-                  transition={{ duration: 0.3, delay: 2.4 + (i * 0.02) }}
-                  style={{ whiteSpace: "pre-wrap", display: "inline-block" }}
-                >
-                  {char === " " ? "\u00A0" : char}
-                </motion.span>
-              ))}
-              <motion.span
-                initial={{ opacity: 0 }}
-                animate={{ opacity: [0, 1, 1, 0, 0] }}
-                transition={{
-                  duration: 0.8,
-                  repeat: Infinity,
-                  times: [0, 0.1, 0.5, 0.6, 1],
-                  delay: 2.4
-                }}
-                style={{
-                  display: "inline-block",
-                  width: "0.4em",
-                  height: "0.9em",
-                  backgroundColor: "var(--text-primary)",
-                  verticalAlign: "bottom",
-                  marginLeft: "8px",
-                  marginBottom: "4px"
-                }}
-              />
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: [0, 1, 1, 0, 0] }}
+                  transition={{
+                    duration: 0.8,
+                    repeat: Infinity,
+                    times: [0, 0.1, 0.5, 0.6, 1],
+                    delay: 2.4
+                  }}
+                  style={{
+                    display: "inline-block",
+                    width: "0.4em",
+                    height: "0.9em",
+                    backgroundColor: "var(--text-primary)",
+                    verticalAlign: "bottom",
+                    marginLeft: "4px",
+                    marginBottom: "4px"
+                  }}
+                />
+              </span>
             </motion.h1>
             <motion.p className="hero__summary" variants={itemVariants}>{summary}</motion.p>
             <motion.p className="hero__availability" variants={itemVariants}>
