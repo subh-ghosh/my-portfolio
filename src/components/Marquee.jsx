@@ -37,12 +37,13 @@ export default function Marquee({ items, direction = 'left', speed = 30, variant
 
   useAnimationFrame((t, delta) => {
     // Base speed: constant drift (made slightly slower)
-    const baseSpeed = baseDirection * (30 / speed) * (delta / 1000);
+    const baseSpeed = baseDirection * (20 / speed) * (delta / 1000);
 
     // Scroll modifier: adds velocity in the scroll direction.
     // If scrolling down (positive), it accelerates the base direction.
     // If scrolling up (negative), it reverses the base direction.
-    const scrollModifier = baseDirection * (smoothVelocity.get() / 300) * (delta / 1000);
+    // Divided by 500 to make the pull gentler.
+    const scrollModifier = baseDirection * (smoothVelocity.get() / 500) * (delta / 1000);
 
     baseX.set(baseX.get() + baseSpeed + scrollModifier);
   });
