@@ -228,15 +228,7 @@
     padding: 40px 20px;
   }
   .hero__typography-art {
-    justify-content: center;
-    position: absolute;
-    top: auto;
-    bottom: -5%;
-    left: 0;
-    width: 100%;
-    opacity: 0.06;
-    z-index: -1;
-    overflow: hidden;
+    display: none;
   }
   .hero__giant-text {
     font-size: clamp(60px, 20vw, 120px);
