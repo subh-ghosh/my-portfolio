@@ -2,6 +2,7 @@
   min-height: 100vh;
   display: flex;
   flex-direction: column;
+  position: relative;
 }
 
 .hero__content {
@@ -229,7 +230,8 @@
   .hero__typography-art {
     justify-content: center;
     position: absolute;
-    top: 20%;
+    top: auto;
+    bottom: 25%;
     left: 0;
     width: 100%;
     opacity: 0.15;
