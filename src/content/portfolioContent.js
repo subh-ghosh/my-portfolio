@@ -2,7 +2,7 @@ export const personalInfo = {
   name: 'Subarta Ghosh',
   title: 'Full Stack Developer',
   subtitle: 'MCA Student',
-  location: 'Vellore, Tamil Nadu',
+  location: 'VIT, Vellore',
   phone: '7319591361',
   email: 'subartaghosh6@gmail.com',
   linkedin: 'https://www.linkedin.com/in/subhh',
@@ -56,6 +56,7 @@ export const projects = [
     num: '01',
     name: 'Asphalt Prep',
     category: 'Adaptive Learning SaaS',
+    image: '/p1.png',
     stack: 'Spring Boot 3 · PostgreSQL · Redis · Caffeine · Kafka · Docker',
     summary:
       'Built a scalable learning platform with modular backend architecture, observability, rate limiting, resilience patterns, and LLM-powered adaptive content.',
@@ -73,6 +74,7 @@ export const projects = [
     num: '02',
     name: 'SignalShift',
     category: 'AI Feedback Analytics',
+    image: '/p2.png',
     stack: 'FastAPI · React · scikit-learn · FAISS · OpenAI API',
     summary:
       'Designed an API-driven analytics platform for large-scale app reviews with sentiment modeling, topic analysis, summarization, and RAG-ready retrieval flows.',
@@ -89,6 +91,7 @@ export const projects = [
     num: '03',
     name: 'Autonomous Fire Detection and Response System',
     category: 'Embedded Systems & IoT',
+    image: '/p3.png',
     stack: 'ESP32 · Arduino · C++ · Sensors · Blynk IoT',
     summary:
       'Built a fire-detection robot with probabilistic flame classification, servo-controlled suppression, and IoT-assisted monitoring.',

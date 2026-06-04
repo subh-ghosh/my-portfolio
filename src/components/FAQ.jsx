@@ -25,7 +25,6 @@ export default function FAQ() {
       <div className="faq__inner">
         <SectionLabel
           left="© Recruiter FAQ"
-          center="(WDX® — 11)"
           right="Quick Answers"
         />
         <motion.div 

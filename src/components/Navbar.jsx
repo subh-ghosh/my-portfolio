@@ -14,6 +14,7 @@ export default function Navbar() {
     >
       <div className="navbar__inner">
         <a href="#top" className="navbar__logo">
+          <img src="/nav-profile.jpg" alt="Profile" className="navbar__profile-pic" />
           {personalInfo.name}
         </a>
         <div className="navbar__center">
@@ -36,7 +37,7 @@ export default function Navbar() {
             <span className="navbar__role">{personalInfo.title}</span>
           </div>
           <MagneticButton>
-            <a href="/Resume.pdf" download className="navbar__resume-btn">
+            <a href="/Resume.pdf" target="_blank" rel="noopener noreferrer" className="navbar__resume-btn">
               Resume
               <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" style={{marginLeft: '6px'}}>
                 <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>

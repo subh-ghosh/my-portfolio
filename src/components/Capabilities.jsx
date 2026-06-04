@@ -1,6 +1,6 @@
 import { motion } from 'framer-motion';
 import SectionLabel from './SectionLabel';
-import { skillGroups } from '../content/portfolioContent';
+import { skillGroups, techPillars } from '../content/portfolioContent';
 import './Capabilities.css';
 
 export default function Capabilities() {
@@ -32,6 +32,19 @@ export default function Capabilities() {
           transition={{ type: 'spring', stiffness: 100, damping: 20 }}
         >
           <h2 className="capabilities__title">Skills</h2>
+        </motion.div>
+        <motion.div 
+          className="capabilities__logos"
+          variants={containerVariants}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, margin: "-100px" }}
+        >
+          {techPillars.map((name) => (
+            <motion.div key={name} className="capabilities__logo-card" variants={itemVariants}>
+              <span className="capabilities__logo-text">{name}</span>
+            </motion.div>
+          ))}
         </motion.div>
         <motion.div 
           className="capabilities__list"

@@ -29,6 +29,16 @@
   letter-spacing: 0.1em;
 }
 
+.preloader__profile-pic {
+  width: 115px;
+  height: 115px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  margin-bottom: 8px;
+  filter: brightness(0.7) contrast(1.25) saturate(1.2);
+}
+
 .preloader__title {
   font-size: 12px;
   color: var(--text-secondary);

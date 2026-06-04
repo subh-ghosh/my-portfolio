@@ -79,7 +79,7 @@ export default function Profile() {
           <p className="profile__bio">
             Recent work spans production-oriented SaaS, review intelligence pipelines, and embedded automation—always with a bias toward measurable improvements and maintainable architecture.
           </p>
-          <RollingText text="SEE EDUCATION" href="#education" className="rolling-text--cta" />
+          <RollingText text="VIEW PROJECTS" href="#projects" className="rolling-text--cta" />
         </motion.div>
       </div>
     </section>

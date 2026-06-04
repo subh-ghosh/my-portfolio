@@ -2,7 +2,7 @@ import { useRef } from 'react';
 import { motion, useScroll, useTransform } from 'framer-motion';
 import SectionLabel from './SectionLabel';
 import RollingText from './RollingText';
-import { currentFocus, personalPitch, techPillars } from '../content/portfolioContent';
+import { currentFocus, personalPitch } from '../content/portfolioContent';
 import './About.css';
 
 export default function About() {
@@ -51,16 +51,8 @@ export default function About() {
                   className="about__visual"
                   style={{ y: yVisual }}
                 >
-                  <img src="/profile-placeholder.png" alt="Profile Abstract" className="about__image" />
+                  <img src="/profile.jpg" alt="Subarta Ghosh Profile" />
                 </motion.div>
-              </div>
-              <div className="about__summary-card">
-                <span className="about__summary-label">Current focus</span>
-                <ul className="about__summary-list">
-                  {currentFocus.map((item) => (
-                    <li key={item}>{item}</li>
-                  ))}
-                </ul>
               </div>
             </div>
           </motion.div>
@@ -75,24 +67,21 @@ export default function About() {
               Full stack developer skilled in Java, Spring Boot, FastAPI, React, SQL, and modern cloud delivery with a strong grounding in DSA, OOPs, DBMS, and systems thinking.
             </motion.h2>
             <motion.p className="about__pitch" variants={textVariants}>{personalPitch}</motion.p>
+            
+            <motion.div variants={textVariants} className="about__focus-block">
+              <span className="about__summary-label">Current focus</span>
+              <ul className="about__summary-list">
+                {currentFocus.map((item) => (
+                  <li key={item}>{item}</li>
+                ))}
+              </ul>
+            </motion.div>
+
             <motion.div variants={textVariants}>
-              <RollingText text="CONTACT" href="#contact" className="rolling-text--cta" />
+              <RollingText text="READ FAQ" href="#faq" className="rolling-text--cta" />
             </motion.div>
           </motion.div>
         </div>
-        <motion.div 
-          className="about__logos"
-          variants={containerVariants}
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, margin: "-100px" }}
-        >
-          {techPillars.map((name) => (
-            <motion.div key={name} className="about__logo-card" variants={itemVariants}>
-              <span className="about__logo-text">{name}</span>
-            </motion.div>
-          ))}
-        </motion.div>
       </div>
     </section>
   );

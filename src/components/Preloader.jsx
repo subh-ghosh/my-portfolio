@@ -31,6 +31,7 @@ export default function Preloader() {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.2 }}
             >
+              <img src="/nav-profile.jpg" alt="Profile" className="preloader__profile-pic" />
               <div className="preloader__name">SUBARTA GHOSH</div>
               <div className="preloader__title">PORTFOLIO © 2026</div>
             </motion.div>

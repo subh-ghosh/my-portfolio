@@ -160,14 +160,18 @@ html.lenis, html.lenis body {
 
 /* ===== SCROLLBAR ===== */
 ::-webkit-scrollbar {
-  width: 6px;
+  width: 14px;
 }
 ::-webkit-scrollbar-track {
   background: var(--bg-primary);
 }
 ::-webkit-scrollbar-thumb {
-  background: #333;
-  border-radius: 3px;
+  background: #444;
+  border-radius: 10px;
+  border: 4px solid var(--bg-primary);
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #666;
 }
 
 @media (max-width: 768px) {

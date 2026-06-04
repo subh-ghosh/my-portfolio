@@ -54,36 +54,24 @@ export default function Hero() {
                 <a className="hero__cta" href="#projects">View Projects</a>
               </MagneticButton>
               <MagneticButton>
-                <a className="hero__cta hero__cta--ghost" href="/Resume.pdf" download>Download Resume</a>
+                <a className="hero__cta hero__cta--ghost" href="/Resume.pdf" target="_blank" rel="noopener noreferrer">Download Resume</a>
               </MagneticButton>
               <MagneticButton>
                 <a className="hero__cta hero__cta--ghost" href="#contact">Contact</a>
               </MagneticButton>
             </motion.div>
           </motion.div>
+          
           <motion.div 
-            className="hero__visual"
-            initial={{ opacity: 0, scale: 0.95, rotate: -2 }}
-            animate={{ opacity: 1, scale: 1, rotate: 0 }}
-            transition={{ type: 'spring', stiffness: 80, damping: 25, delay: 0.4 }}
+            className="hero__typography-art"
+            style={{ y: useTransform(scrollYProgress, [0, 1], ["0%", "30%"]) }}
+            initial={{ opacity: 0, x: 50 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ duration: 1.2, delay: 0.4, ease: "easeOut" }}
           >
-            <div className="hero__image-card">
-              <div className="hero__image-placeholder">
-                <div className="hero__image-inner hero__image-inner--profile">
-                  <span className="hero__card-label">{personalInfo.title}</span>
-                  <h2 className="hero__card-name">{personalInfo.name}</h2>
-                  <div className="hero__stats">
-                    {quickStats.map((stat) => (
-                      <div key={stat.label} className="hero__stat">
-                        <span className="hero__stat-value">{stat.value}</span>
-                        <span className="hero__stat-label">{stat.label}</span>
-                      </div>
-                    ))}
-                  </div>
-                </div>
-              </div>
-            </div>
+            <span className="hero__giant-text">{'< / >'}</span>
           </motion.div>
+
         </div>
       </div>
       <motion.div 

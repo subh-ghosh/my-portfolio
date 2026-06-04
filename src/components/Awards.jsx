@@ -35,10 +35,19 @@ export default function Awards() {
             <motion.div key={i} className="award-item" variants={itemVariants}>
               <span className="award-item__count">{a.count}</span>
               <div className="award-item__info">
-                <h3 className="award-item__org">
-                  {a.url ? <a href={a.url} target="_blank" rel="noreferrer">{a.org}</a> : a.org}
-                </h3>
-                <p className="award-item__desc">{a.desc}</p>
+                <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', flexWrap: 'wrap', gap: '16px' }}>
+                  <div style={{ flex: '1 1 min-content' }}>
+                    <h3 className="award-item__org">
+                      {a.url ? <a href={a.url} target="_blank" rel="noreferrer">{a.org}</a> : a.org}
+                    </h3>
+                    <p className="award-item__desc">{a.desc}</p>
+                  </div>
+                  {a.url && (
+                    <a href={a.url} target="_blank" rel="noreferrer" className="award-item__btn">
+                      View Certificate
+                    </a>
+                  )}
+                </div>
               </div>
             </motion.div>
           ))}

@@ -86,41 +86,45 @@ export default function Projects() {
               key={p.num} 
               className={`project-card project-card--${i % 2 === 0 ? 'large' : 'small'}`}
               variants={itemVariants}
+              onClick={() => window.open(p.liveUrl || p.repoUrl, '_blank', 'noopener,noreferrer')}
             >
-              <div className="project-card__image" style={{ background: gradients[i] }}>
-                <div className="project-card__placeholder">
-                  <div className="project-card__stack">
-                    {p.stack.split(' · ').map(tech => (
-                      <span key={tech} className="project-card__tech-badge">{tech}</span>
-                    ))}
-                  </div>
+              <div 
+                className="project-card__visual" 
+                style={p.image ? { backgroundImage: `url(${p.image})`, backgroundSize: 'cover', backgroundPosition: 'center' } : { background: gradients[i] }}
+              >
+                <div className="project-card__visual-overlay"></div>
+              </div>
+              <div className="project-card__content">
+                <div className="project-card__stack">
+                  {p.stack.split(' · ').map(tech => (
+                    <span key={tech} className="project-card__tech-badge">{tech}</span>
+                  ))}
+                </div>
 
-                  <p className="project-card__summary" style={{ fontSize: '18px', color: '#fff', marginBottom: '24px' }}>{p.summary}</p>
-                  
-                  <div className="project-card__metrics-grid">
-                    {p.metrics.map((metric) => {
-                      // Extract the number to highlight it if possible, or just style the whole block
-                      const words = metric.split(' ');
-                      const highlight = words[0];
-                      const rest = words.slice(1).join(' ');
-                      return (
-                        <div key={metric} className="project-card__metric-block">
-                          <span className="project-card__metric-highlight">{highlight}</span>
-                          <span className="project-card__metric-text">{rest}</span>
-                        </div>
-                      )
-                    })}
-                  </div>
+                <p className="project-card__summary" style={{ fontSize: '18px', color: '#fff', marginBottom: '24px' }}>{p.summary}</p>
+                
+                <div className="project-card__metrics-grid">
+                  {p.metrics.map((metric) => {
+                    const words = metric.split(' ');
+                    const highlight = words[0];
+                    const rest = words.slice(1).join(' ');
+                    return (
+                      <div key={metric} className="project-card__metric-block">
+                        <span className="project-card__metric-highlight">{highlight}</span>
+                        <span className="project-card__metric-text">{rest}</span>
+                      </div>
+                    )
+                  })}
+                </div>
 
-                  <div className="project-card__story">
-                    <div className="project-card__story-block">
-                      <span className="project-card__story-label">Challenge</span>
-                      <p>{p.challenge}</p>
-                    </div>
-                    <div className="project-card__story-block">
-                      <span className="project-card__story-label">Impact</span>
-                      <p>{p.impact}</p>
-                    </div>
+                <div className="project-card__story">
+                  <div className="project-card__story-block">
+                    <span className="project-card__story-label">Challenge</span>
+                    <p>{p.challenge}</p>
+                  </div>
+                  <div className="project-card__story-block">
+                    <span className="project-card__story-label">Impact</span>
+                    <p>{p.impact}</p>
                   </div>
                 </div>
               </div>
