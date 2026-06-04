@@ -12,7 +12,7 @@
 .navbar__inner {
   max-width: var(--max-width);
   margin: 0 auto;
-  padding: 20px var(--side-padding);
+  padding: max(20px, env(safe-area-inset-top)) var(--side-padding) 20px;
   display: flex;
   align-items: flex-start;
   justify-content: space-between;

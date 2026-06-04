@@ -66,6 +66,17 @@
   border-color: rgba(255, 255, 255, 0.2);
 }
 
+.award-item__header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 16px;
+}
+
+.award-item__text {
+  flex: 1;
+}
+
 @media (max-width: 768px) {
   .award-item {
     grid-template-columns: 80px 1fr;
@@ -73,5 +84,9 @@
   }
   .award-item__count {
     font-size: 32px;
+  }
+  .award-item__header {
+    flex-direction: column;
+    align-items: flex-start;
   }
 }
