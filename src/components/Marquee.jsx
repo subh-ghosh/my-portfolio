@@ -28,28 +28,23 @@ export default function Marquee({ items, direction = 'left', speed = 30, variant
     stiffness: 400
   });
   
-  const velocityFactor = useTransform(smoothVelocity, [0, 1000], [0, 2], {
+  const velocityFactor = useTransform(smoothVelocity, [0, 1000], [0, 5], {
     clamp: false
   });
 
   const x = useTransform(baseX, (v) => `${wrap(-25, 0, v)}%`);
-
-  const directionFactor = useRef(direction === 'left' ? -1 : 1);
+  const baseDirection = direction === 'left' ? -1 : 1;
 
   useAnimationFrame((t, delta) => {
-    // 50 / speed matches the original CSS speed where 50% track shift took `speed` seconds.
-    // We wrap at 25%, so moving 25% takes speed/2 seconds.
-    let moveBy = directionFactor.current * (50 / speed) * (delta / 1000);
+    // Base speed: constant drift (made slightly slower)
+    const baseSpeed = baseDirection * (30 / speed) * (delta / 1000);
 
-    if (velocityFactor.get() < 0) {
-      directionFactor.current = 1;
-    } else if (velocityFactor.get() > 0) {
-      directionFactor.current = -1;
-    }
+    // Scroll modifier: adds velocity in the scroll direction.
+    // If scrolling down (positive), it accelerates the base direction.
+    // If scrolling up (negative), it reverses the base direction.
+    const scrollModifier = baseDirection * (smoothVelocity.get() / 300) * (delta / 1000);
 
-    // Apply a much milder scroll velocity modifier
-    moveBy += directionFactor.current * Math.abs(moveBy) * Math.abs(velocityFactor.get());
-    baseX.set(baseX.get() + moveBy);
+    baseX.set(baseX.get() + baseSpeed + scrollModifier);
   });
 
   if (isStatic) {
