@@ -27,60 +27,85 @@
 }
 
 .capabilities__list {
-  margin-top: 32px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 24px;
+  margin-top: 40px;
 }
 
 .capability-item {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 40px;
-  padding: 26px 0;
-  border-bottom: 1px solid var(--border-light);
-  align-items: start;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  padding: 32px;
+  background: linear-gradient(145deg, rgba(255, 255, 255, 0.03) 0%, rgba(255, 255, 255, 0.01) 100%);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  border-radius: 16px;
+  overflow: hidden;
+  transition: transform 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
 }
 
-.capability-item:first-child {
-  border-top: 1px solid var(--border-light);
+.capability-item:hover {
+  transform: translateY(-4px);
+  border-color: rgba(255, 255, 255, 0.15);
+  box-shadow: 0 20px 40px -20px rgba(0, 0, 0, 0.5);
 }
 
 .capability-item__left {
-  display: flex;
-  align-items: baseline;
-  gap: 20px;
+  position: relative;
+  z-index: 2;
+  margin-bottom: 16px;
 }
 
 .capability-item__num {
-  font-size: 13px;
-  color: var(--text-muted);
-  font-weight: 500;
+  position: absolute;
+  top: 16px;
+  right: 24px;
+  font-size: 64px;
+  font-weight: 800;
+  line-height: 1;
+  color: rgba(255, 255, 255, 0.03);
+  z-index: 1;
+  pointer-events: none;
 }
 
 .capability-item__title {
   font-size: 22px;
-  font-weight: 500;
+  font-weight: 600;
   letter-spacing: -0.01em;
+  color: #fff;
 }
 
 .capability-item__desc {
   font-size: 15px;
   line-height: 1.6;
   color: var(--text-secondary);
+  position: relative;
+  z-index: 2;
 }
 
 @media (max-width: 768px) {
-  .capability-item {
+  .capabilities__list {
     grid-template-columns: 1fr;
-    gap: 8px;
-    padding: 20px 0;
+    gap: 16px;
   }
-  .capability-item__left {
-    gap: 12px;
+  .capability-item {
+    padding: 24px;
+  }
+  .capability-item__num {
+    font-size: 48px;
+    top: 12px;
+    right: 16px;
   }
   .capabilities__title {
     font-size: clamp(36px, 10vw, 88px);
   }
   .capabilities__logos {
     grid-template-columns: repeat(2, 1fr);
+  }
+  .capabilities__logo-card {
+    padding: 24px 12px;
   }
 }
 
