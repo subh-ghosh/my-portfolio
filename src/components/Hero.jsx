@@ -48,14 +48,33 @@ export default function Hero() {
               {headingText.split("").map((char, i) => (
                 <motion.span
                   key={i}
-                  initial={{ opacity: 0 }}
-                  animate={{ opacity: 1 }}
-                  transition={{ duration: 0.05, delay: 2.4 + (i * 0.015) }}
-                  style={{ whiteSpace: "pre-wrap" }}
+                  initial={{ opacity: 0, textShadow: "0px 0px 20px rgba(255,255,255,1)" }}
+                  animate={{ opacity: 1, textShadow: "0px 0px 0px rgba(255,255,255,0)" }}
+                  transition={{ duration: 0.3, delay: 2.4 + (i * 0.02) }}
+                  style={{ whiteSpace: "pre-wrap", display: "inline-block" }}
                 >
-                  {char}
+                  {char === " " ? "\u00A0" : char}
                 </motion.span>
               ))}
+              <motion.span
+                initial={{ opacity: 0 }}
+                animate={{ opacity: [0, 1, 1, 0, 0] }}
+                transition={{
+                  duration: 0.8,
+                  repeat: Infinity,
+                  times: [0, 0.1, 0.5, 0.6, 1],
+                  delay: 2.4
+                }}
+                style={{
+                  display: "inline-block",
+                  width: "0.4em",
+                  height: "0.9em",
+                  backgroundColor: "var(--text-primary)",
+                  verticalAlign: "bottom",
+                  marginLeft: "8px",
+                  marginBottom: "4px"
+                }}
+              />
             </motion.h1>
             <motion.p className="hero__summary" variants={itemVariants}>{summary}</motion.p>
             <motion.p className="hero__availability" variants={itemVariants}>
