@@ -1,6 +1,7 @@
 import { motion } from 'framer-motion';
 import SectionLabel from './SectionLabel';
 import RollingText from './RollingText';
+import WordReveal from './WordReveal';
 import { focusAreas } from '../content/portfolioContent';
 import './Profile.css';
 
@@ -65,7 +66,7 @@ export default function Profile() {
           </div>
           <motion.div className="profile__content-block" variants={itemVariants}>
             <h2 className="profile__text">
-              Engineering products that connect system performance, product thinking, and AI-assisted user value.
+              <WordReveal text="Engineering products that connect system performance, product thinking, and AI-assisted user value." delay={0.1} />
             </h2>
           </motion.div>
         </motion.div>

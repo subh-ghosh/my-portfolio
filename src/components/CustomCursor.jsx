@@ -42,14 +42,16 @@ export default function CustomCursor() {
       x: mousePosition.x - 8,
       y: mousePosition.y - 8,
       scale: 1,
-      backgroundColor: 'rgba(255, 255, 255, 0.8)',
+      backgroundColor: 'rgba(255, 255, 255, 1)',
+      border: '0px solid rgba(255, 255, 255, 0)',
+      backdropFilter: 'blur(0px)'
     },
     hover: {
-      x: mousePosition.x - 24,
-      y: mousePosition.y - 24,
-      scale: 1.5,
-      backgroundColor: 'rgba(255, 255, 255, 0.1)',
-      border: '1px solid rgba(255, 255, 255, 0.5)',
+      x: mousePosition.x - 8,
+      y: mousePosition.y - 8,
+      scale: 3.5,
+      backgroundColor: 'rgba(255, 255, 255, 0.05)',
+      border: '0.5px solid rgba(255, 255, 255, 0.5)',
       backdropFilter: 'blur(4px)'
     }
   };
