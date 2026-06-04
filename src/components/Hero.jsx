@@ -48,21 +48,21 @@ export default function Hero() {
           currentStr += baseText[index];
           setDisplayText(currentStr);
           index++;
-          timeout = setTimeout(tick, 15);
+          timeout = setTimeout(tick, 25);
         } else {
           phase = "typeWord1";
           index = 0;
-          timeout = setTimeout(tick, 15);
+          timeout = setTimeout(tick, 25);
         }
       } else if (phase === "typeWord1") {
         if (index < word1.length) {
           currentStr += word1[index];
           setDisplayText(currentStr);
           index++;
-          timeout = setTimeout(tick, 40);
+          timeout = setTimeout(tick, 50);
         } else {
           phase = "pause";
-          timeout = setTimeout(tick, 1200);
+          timeout = setTimeout(tick, 1500);
         }
       } else if (phase === "pause") {
         phase = "deleteWord1";
@@ -73,10 +73,10 @@ export default function Hero() {
           currentStr = currentStr.slice(0, -1);
           setDisplayText(currentStr);
           index++;
-          timeout = setTimeout(tick, 25);
+          timeout = setTimeout(tick, 35);
         } else {
           phase = "pause2";
-          timeout = setTimeout(tick, 400);
+          timeout = setTimeout(tick, 500);
         }
       } else if (phase === "pause2") {
         phase = "typeWord2";
@@ -87,7 +87,7 @@ export default function Hero() {
           currentStr += word2[index];
           setDisplayText(currentStr);
           index++;
-          timeout = setTimeout(tick, 50);
+          timeout = setTimeout(tick, 70);
         }
       }
     };
