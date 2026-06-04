@@ -253,6 +253,7 @@
 @media (max-width: 768px) {
   .projects__grid {
     grid-template-columns: 1fr;
+    gap: 30px;
   }
   .project-card--small .project-card__visual {
     height: 300px;
@@ -264,12 +265,18 @@
     height: 300px;
   }
   .project-card__content {
-    padding: 0 22px 22px 22px;
+    padding: 0 16px 20px 16px;
   }
   .project-card__story {
     grid-template-columns: 1fr;
+    gap: 16px;
   }
   .project-card__info {
     flex-direction: column;
+  }
+  .project-card__metrics-grid {
+    gap: 12px;
+    margin-top: 16px;
+    padding-top: 16px;
   }
 }

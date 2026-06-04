@@ -181,14 +181,14 @@ html.lenis, html.lenis body {
 
 @media (max-width: 768px) {
   :root {
-    --section-padding: 80px;
+    --section-padding: 50px;
     --side-padding: 20px;
   }
 }
 
 @media (max-width: 480px) {
   :root {
-    --section-padding: 60px;
+    --section-padding: 40px;
     --side-padding: 16px;
   }
 }

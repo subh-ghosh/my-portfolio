@@ -54,9 +54,20 @@
 @media (max-width: 768px) {
   .experience-item {
     grid-template-columns: 1fr 1fr;
-    gap: 8px;
+    gap: 10px;
+    padding: 20px 0;
+  }
+  .experience-item__company {
+    font-size: 16px;
+  }
+  .experience-item__years {
+    text-align: right;
   }
   .experience-item__role {
     grid-column: 1 / -1;
+  }
+  .experience-item__city {
+    grid-column: 1 / -1;
+    text-align: left;
   }
 }
