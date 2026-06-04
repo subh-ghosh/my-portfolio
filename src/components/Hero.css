@@ -221,9 +221,33 @@
     grid-template-columns: 1fr;
     gap: 40px;
     min-height: auto;
+    text-align: center;
+  }
+  .hero__content {
+    padding: 40px 20px;
+  }
+  .hero__typography-art {
+    justify-content: center;
+    position: absolute;
+    top: 20%;
+    left: 0;
+    width: 100%;
+    opacity: 0.15;
+    z-index: -1;
+  }
+  .hero__giant-text {
+    font-size: clamp(60px, 20vw, 120px);
+  }
+  .hero__summary, .hero__availability {
+    margin-left: auto;
+    margin-right: auto;
+  }
+  .hero__actions {
+    justify-content: center;
   }
   .hero__visual {
     justify-content: center;
+    margin-top: 40px;
   }
   .hero__image-card {
     max-width: 280px;

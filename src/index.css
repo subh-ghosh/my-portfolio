@@ -198,7 +198,7 @@ html.lenis, html.lenis body {
 }
 
 .massive-text {
-  font-size: clamp(80px, 20vw, 300px);
+  font-size: clamp(40px, 12vw, 300px);
   font-weight: 700;
   line-height: 0.85;
   letter-spacing: -0.05em;
