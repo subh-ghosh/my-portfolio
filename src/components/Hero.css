@@ -234,6 +234,7 @@
     width: 100%;
     opacity: 0.15;
     z-index: -1;
+    overflow: hidden;
   }
   .hero__giant-text {
     font-size: clamp(60px, 20vw, 120px);
