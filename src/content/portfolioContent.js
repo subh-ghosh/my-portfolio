@@ -150,7 +150,7 @@ export const education = [
     years: '2025 – 2027',
     degree: 'Master of Computer Applications (MCA)',
     city: 'Vellore',
-    detail: 'CGPA: 9.27/10',
+    detail: 'CGPA: 9.17/10',
   },
   {
     institution: 'University of Calcutta',
@@ -214,7 +214,7 @@ export const faqs = [
   },
   {
     q: 'What is my current academic status?',
-    a: 'I am currently pursuing my MCA at Vellore Institute of Technology with a CGPA of 9.27/10.',
+    a: 'I am currently pursuing my MCA at Vellore Institute of Technology with a CGPA of 9.17/10.',
   },
   {
     q: 'How can recruiters or collaborators reach out?',
