@@ -38,8 +38,10 @@
   font-weight: 700;
   letter-spacing: -0.04em;
   color: var(--text-primary);
-  line-height: 1;
+  line-height: 1.1;
   transition: opacity 0.3s;
+  word-break: break-all;
+  display: block;
 }
 
 .footer__massive-email:hover {
