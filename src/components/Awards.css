@@ -79,8 +79,8 @@
 
 @media (max-width: 768px) {
   .award-item {
-    grid-template-columns: 80px 1fr;
-    gap: 20px;
+    grid-template-columns: 1fr;
+    gap: 12px;
   }
   .award-item__count {
     font-size: 32px;

@@ -267,7 +267,7 @@ export const education = [
 
 export const achievements = [
   {
-    count: 'Finalist',
+    count: 'Top 50',
     org: 'HackOn With Amazon 6.0',
     desc: 'National Finalist for Second Life Commerce (SLC) return-prevention architecture.',
   },
