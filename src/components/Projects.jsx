@@ -136,24 +136,24 @@ export default function Projects() {
                     <p>{p.impact}</p>
                   </div>
                 </div>
-              </div>
-              <div className="project-card__info">
-                <div className="project-card__meta">
-                  <span className="project-card__name">{p.name}</span>
-                  <span className="project-card__category">{p.category}</span>
-                  <span className="project-card__num">({p.num})</span>
-                </div>
-                <div className="project-card__links">
-                  {p.liveUrl ? (
-                    <MagneticButton>
-                      <a href={p.liveUrl} target="_blank" rel="noreferrer" className="project-card__action-btn">Live Demo</a>
-                    </MagneticButton>
-                  ) : null}
-                  {p.repoUrl ? (
-                    <MagneticButton>
-                      <a href={p.repoUrl} target="_blank" rel="noreferrer" className="project-card__action-btn project-card__action-btn--secondary">Source Code</a>
-                    </MagneticButton>
-                  ) : null}
+                <div className="project-card__info">
+                  <div className="project-card__meta">
+                    <span className="project-card__name">{p.name}</span>
+                    <span className="project-card__category">{p.category}</span>
+                    <span className="project-card__num">({p.num})</span>
+                  </div>
+                  <div className="project-card__links">
+                    {p.liveUrl ? (
+                      <MagneticButton>
+                        <a href={p.liveUrl} target="_blank" rel="noreferrer" className="project-card__action-btn">Live Demo</a>
+                      </MagneticButton>
+                    ) : null}
+                    {p.repoUrl ? (
+                      <MagneticButton>
+                        <a href={p.repoUrl} target="_blank" rel="noreferrer" className="project-card__action-btn project-card__action-btn--secondary">Source Code</a>
+                      </MagneticButton>
+                    ) : null}
+                  </div>
                 </div>
               </div>
             </motion.article>
