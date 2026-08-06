@@ -89,7 +89,7 @@ export default function Projects() {
               onClick={() => window.open(p.liveUrl || p.repoUrl, '_blank', 'noopener,noreferrer')}
             >
               <div 
-                className="project-card__visual" 
+                className={`project-card__visual ${[1, 2, 4, 5, 6].includes(i) ? 'project-card__visual--darkened' : ''}`}
                 style={
                   p.image 
                     ? { 
