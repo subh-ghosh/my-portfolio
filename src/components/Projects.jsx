@@ -90,7 +90,7 @@ export default function Projects() {
             >
               <div 
                 className="project-card__visual" 
-                style={p.image ? { backgroundImage: `url(${p.image})`, backgroundSize: 'cover', backgroundPosition: 'center' } : { background: gradients[i] }}
+                style={p.image ? { backgroundImage: `url(${p.image})`, backgroundSize: 'cover', backgroundPosition: 'top center' } : { background: gradients[i] }}
               >
                 <div className="project-card__visual-overlay"></div>
               </div>
