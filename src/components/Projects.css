@@ -293,9 +293,18 @@
     font-size: 12px;
   }
   .project-card__metrics-grid {
-    grid-template-columns: repeat(auto-fit, minmax(110px, 1fr));
-    gap: 12px;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 8px;
     margin-top: 16px;
     padding-top: 16px;
+  }
+  .project-card__metric-highlight {
+    font-size: 20px;
+    word-break: break-word;
+    overflow-wrap: anywhere;
+  }
+  .project-card__metric-text {
+    font-size: 11px;
+    word-break: break-word;
   }
 }
