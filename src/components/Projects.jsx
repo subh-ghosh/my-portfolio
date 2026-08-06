@@ -84,7 +84,7 @@ export default function Projects() {
           {projects.map((p, i) => (
             <motion.article 
               key={p.num} 
-              className={`project-card project-card--${i % 2 === 0 ? 'large' : 'small'}`}
+              className="project-card"
               variants={itemVariants}
               onClick={() => window.open(p.liveUrl || p.repoUrl, '_blank', 'noopener,noreferrer')}
             >
