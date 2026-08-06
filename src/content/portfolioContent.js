@@ -145,7 +145,7 @@ export const projects = [
     num: '06',
     name: 'Tredence HR Workflow Designer',
     category: 'Frontend Engineering Prototype',
-    image: '/Tredence Analytics — HR Workflow Designer.png',
+    image: '/tredence.png',
     stack: 'React · TypeScript · React Flow · Tailwind CSS',
     summary:
       'Built an interactive drag-and-drop HR workflow designer demonstrating complex visual node pipelines, mock execution engine, and state management.',
@@ -163,7 +163,7 @@ export const projects = [
     num: '07',
     name: 'CivicOS / Vibe2Ship',
     category: 'Hyperlocal Governance Platform',
-    image: '/Community Hero - Hyperlocal Problem Solver.png',
+    image: '/civicos.png',
     stack: 'React · Firebase · Google Maps API · Tailwind CSS',
     summary:
       'Built a community-driven civic problem solving web app for reporting, tracking, and resolving localized urban infrastructure issues.',
