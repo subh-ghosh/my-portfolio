@@ -258,28 +258,42 @@
 @media (max-width: 768px) {
   .projects__grid {
     grid-template-columns: 1fr;
-    gap: 30px;
+    gap: 28px;
   }
-  .project-card--small .project-card__visual {
-    height: 300px;
-  }
-  .project-card:last-child {
-    grid-column: auto;
-  }
-  .project-card:last-child .project-card__visual {
-    height: 300px;
+  .project-card__visual {
+    height: 240px;
   }
   .project-card__content {
-    padding: 0 16px 20px 16px;
+    padding: 18px;
   }
   .project-card__story {
     grid-template-columns: 1fr;
-    gap: 16px;
+    gap: 12px;
   }
   .project-card__info {
     flex-direction: column;
+    align-items: flex-start;
+    gap: 12px;
+  }
+  .project-card__meta {
+    max-width: 100%;
+    width: 100%;
+    justify-content: flex-start;
+  }
+  .project-card__name {
+    white-space: normal;
+    font-size: 16px;
+  }
+  .project-card__links {
+    width: 100%;
+    justify-content: flex-start;
+  }
+  .project-card__action-btn {
+    padding: 8px 16px;
+    font-size: 12px;
   }
   .project-card__metrics-grid {
+    grid-template-columns: repeat(auto-fit, minmax(110px, 1fr));
     gap: 12px;
     margin-top: 16px;
     padding-top: 16px;
