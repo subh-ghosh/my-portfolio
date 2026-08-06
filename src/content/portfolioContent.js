@@ -72,6 +72,96 @@ export const projects = [
   },
   {
     num: '02',
+    name: 'StreamBase',
+    category: 'Kafka Infrastructure Platform',
+    image: '/STREAMBASE.png',
+    stack: 'Node.js · Apache Kafka (KRaft) · Express · SQLite · AWS EC2 · Cloudflare',
+    summary:
+      'Engineered an open-source multi-tenant Kafka platform providing automated SCRAM-SHA-512 credential provisioning, ACL isolation, and real-time topic monitoring.',
+    challenge: 'Developers face $50+/month commercial broker costs for sandbox and learning environments.',
+    impact: 'Reduced API response latency by 66% and page load by 77% while sustaining 20 concurrent requests at 100% success rate.',
+    metrics: [
+      '66% API latency reduction (682ms to 230ms avg)',
+      '77% page load speedup (1,461ms to 330ms avg)',
+      '20 concurrent requests sustained at 100% success rate',
+    ],
+    liveUrl: 'https://streambase.subartaghosh.co.in',
+    repoUrl: 'https://github.com/subh-ghosh/kafka-homebase',
+  },
+  {
+    num: '03',
+    name: 'FinShield AI',
+    category: 'Enterprise AML Investigation',
+    image: '/FINSHIELD.png',
+    stack: 'Agentic AI · Python · FastAPI · React · Cloudflare Pages',
+    summary:
+      'Developed an enterprise AI-powered Anti-Money Laundering (AML) investigation platform for transaction anomaly detection and automated compliance reporting.',
+    challenge: 'Financial investigators spend hours manually auditing complex cross-border transaction networks.',
+    impact: 'Automated entity resolution, risk scoring, and evidence report generation using multi-agent AI workflows.',
+    metrics: [
+      'Multi-agent graph workflow for automated investigation',
+      'Real-time risk scoring & network topology graph',
+      'Automated SAR compliance report synthesis',
+    ],
+    liveUrl: 'https://finshield-ai.pages.dev/dashboard',
+    repoUrl: 'https://github.com/subh-ghosh/finshield-ai',
+  },
+  {
+    num: '04',
+    name: 'Tredence HR Workflow Designer',
+    category: 'Frontend Engineering Prototype',
+    image: '/Tredence Analytics — HR Workflow Designer.png',
+    stack: 'React · TypeScript · React Flow · Tailwind CSS',
+    summary:
+      'Built an interactive drag-and-drop HR workflow designer demonstrating complex visual node pipelines, mock execution engine, and state management.',
+    challenge: 'HR automation tools lack visual pipeline builders that validate complex multi-step approvals in real-time.',
+    impact: 'Delivered a zero-backend visual pipeline builder with instant node execution testing and full state serialization.',
+    metrics: [
+      'Interactive React Flow node-based pipeline canvas',
+      'Local execution testing with step-by-step state logs',
+      'Zero-dependency modular frontend architecture',
+    ],
+    liveUrl: 'https://tredence-hr-workflow-designer.pages.dev/',
+    repoUrl: 'https://github.com/subh-ghosh/tredence-hr-workflow-designer',
+  },
+  {
+    num: '05',
+    name: 'Amazon Second Life Commerce (SLC)',
+    category: 'HackOn With Amazon 6.0 Finalist',
+    image: '/AMAZONSECONDLIFECOMMERCE.png',
+    stack: 'AWS Lambda · Python · React · Netlify',
+    summary:
+      'Engineered an intelligent return-prevention and secondary marketplace routing system featuring 14 AWS Lambda microservices.',
+    challenge: 'E-commerce returns generate massive economic loss and landfill waste through inefficient reverse logistics.',
+    impact: 'Selected as HackOn With Amazon 6.0 Finalist for automated pre-purchase resolution and resale routing.',
+    metrics: [
+      'HackOn With Amazon 6.0 Finalist project',
+      '14 AWS Lambda microservices architecture',
+      'Automated resale, refurbishment & donation routing',
+    ],
+    liveUrl: 'https://slc-landing.netlify.app/',
+    repoUrl: 'https://github.com/subh-ghosh/amazon-hackathon',
+  },
+  {
+    num: '06',
+    name: 'CivicOS / Vibe2Ship',
+    category: 'Hyperlocal Governance Platform',
+    image: '/Community Hero - Hyperlocal Problem Solver.png',
+    stack: 'React · Firebase · Google Maps API · Tailwind CSS',
+    summary:
+      'Built a community-driven civic problem solving web app for reporting, tracking, and resolving localized urban infrastructure issues.',
+    challenge: 'Municipal problem reporting suffers from low engagement and lack of real-time resolution transparency.',
+    impact: 'Created a map-integrated civic platform connecting citizens with municipal task force resolution workflows.',
+    metrics: [
+      'Interactive geotagged issue reporting on Google Maps',
+      'Real-time resolution status tracking & upvoting',
+      'Built & shipped during Vibe2Ship Hackathon',
+    ],
+    liveUrl: 'https://vibe2ship-civicos-1efcb.web.app/',
+    repoUrl: 'https://github.com/subh-ghosh/vibe2ship-hackathon',
+  },
+  {
+    num: '07',
     name: 'SignalShift',
     category: 'AI Feedback Analytics',
     image: '/p2.png',
@@ -81,28 +171,11 @@ export const projects = [
     challenge: 'Large-scale customer review data needed structured analysis, summarization, and retrieval-friendly pipelines.',
     impact: 'Turned 191k+ raw reviews into actionable insights with ML scoring, topic modeling, and AI-assisted summaries.',
     metrics: [
-      '191,000+ Google Play reviews processed',
+      '34,700+ live app reviews processed across endpoints',
       '87.6% accuracy with 0.914 F1-score',
       '12 recurring issue categories extracted with NMF',
     ],
     repoUrl: 'https://github.com/subh-ghosh/signalshift',
-  },
-  {
-    num: '03',
-    name: 'Autonomous Fire Detection and Response System',
-    category: 'Embedded Systems & IoT',
-    image: '/p3.png',
-    stack: 'ESP32 · Arduino · C++ · Sensors · Blynk IoT',
-    summary:
-      'Built a fire-detection robot with probabilistic flame classification, servo-controlled suppression, and IoT-assisted monitoring.',
-    challenge: 'Static threshold-based fire detection was unreliable for a moving autonomous robot.',
-    impact: 'Improved detection logic with probabilistic classification and added real-time monitoring for safer autonomous response.',
-    metrics: [
-      'Gaussian-based detection replaced static thresholds',
-      'Linear regression modeled stopping distance',
-      'Real-time alerts integrated through Blynk monitoring',
-    ],
-    repoUrl: 'https://github.com/subh-ghosh/arduino-based-automated-fire-fighting-robot',
   },
 ];
 
@@ -177,6 +250,11 @@ export const education = [
 
 export const achievements = [
   {
+    count: 'Finalist',
+    org: 'HackOn With Amazon 6.0',
+    desc: 'National Finalist for Second Life Commerce (SLC) return-prevention architecture.',
+  },
+  {
     count: '#840',
     org: 'TCS CodeVita Season 13',
     desc: 'Secured Global Rank 840 in a competitive coding contest.',
@@ -187,11 +265,6 @@ export const achievements = [
     org: 'HackerRank Advanced Certification',
     desc: 'Certified in advanced SQL problem solving and database query skills.',
     url: 'https://www.hackerrank.com/certificates/7119e7ec41bc',
-  },
-  {
-    count: '150+',
-    org: 'DSA Problems Solved',
-    desc: 'Solved more than 150 data structures and algorithms problems across coding platforms.',
   },
 ];
 
