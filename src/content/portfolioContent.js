@@ -90,8 +90,8 @@ export const projects = [
   },
   {
     num: '03',
-    name: 'Amazon Second Life Commerce (SLC)',
-    category: 'HackOn With Amazon 6.0 Finalist',
+    name: 'Amazon SLC Platform',
+    category: 'Amazon HackOn Finalist',
     image: '/AMAZONSECONDLIFECOMMERCE.png',
     stack: 'AWS Lambda · Python · React · Netlify',
     summary:
@@ -143,8 +143,8 @@ export const projects = [
   },
   {
     num: '06',
-    name: 'Tredence HR Workflow Designer',
-    category: 'Frontend Engineering Prototype',
+    name: 'Tredence HR Workflow',
+    category: 'Frontend Prototype',
     image: '/tredence.png',
     stack: 'React · TypeScript · React Flow · Tailwind CSS',
     summary:
@@ -179,7 +179,7 @@ export const projects = [
   },
   {
     num: '08',
-    name: 'Autonomous Fire Detection and Response System',
+    name: 'Autonomous Fire Robot',
     category: 'Embedded Systems & IoT',
     image: '/p3.png',
     stack: 'ESP32 · Arduino · C++ · Sensors · Blynk IoT',

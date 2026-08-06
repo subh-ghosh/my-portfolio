@@ -180,42 +180,46 @@
 .project-card__info {
   display: flex;
   justify-content: space-between;
-  align-items: center;
-  gap: 20px;
-  padding: 16px 0;
-  border-bottom: 1px solid var(--border-light);
+  align-items: flex-end;
+  gap: 16px;
+  padding-top: 16px;
+  border-top: 1px solid var(--border-light);
   margin-top: auto;
 }
 
 .project-card__meta {
   display: flex;
-  gap: 12px;
+  gap: 8px;
   align-items: center;
   flex-wrap: wrap;
+  max-width: 60%;
 }
 
 .project-card__name {
-  font-size: 16px;
-  font-weight: 500;
+  font-size: 15px;
+  font-weight: 600;
+  white-space: nowrap;
 }
 
 .project-card__category {
-  font-size: 11px;
+  font-size: 10px;
   color: var(--text-secondary);
-  padding: 4px 10px;
-  border: 1px solid rgba(255,255,255,0.1);
+  padding: 3px 8px;
+  border: 1px solid rgba(255,255,255,0.12);
   border-radius: 100px;
+  white-space: nowrap;
 }
 
 .project-card__num {
-  font-size: 14px;
+  font-size: 13px;
   color: var(--text-secondary);
 }
 
 .project-card__links {
   display: flex;
-  gap: 12px;
-  flex-wrap: wrap;
+  gap: 8px;
+  align-items: center;
+  flex-shrink: 0;
 }
 
 .project-card__action-btn {
